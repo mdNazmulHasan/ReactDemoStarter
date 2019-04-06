@@ -5,7 +5,8 @@ import Person from "../src/Person/Person";
 class App extends Component {
   state = {
     age: 28,
-    name: "Nazmul"
+    name: "Nazmul",
+    showPersons: false
   };
   switchNameHandler = name => {
     this.setState({
@@ -15,6 +16,11 @@ class App extends Component {
   nameChangeHandler = event => {
     this.setState({
       name: event.target.value
+    });
+  };
+  togglePersonHandler = () => {
+    this.setState({
+      showPersons: !this.state.showPersons
     });
   };
 
@@ -29,20 +35,19 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Working</h1>
-        <button
-          onClick={this.switchNameHandler.bind(this, "Hasan")}
-          style={style}
-        >
+        <button onClick={this.togglePersonHandler.bind(this)} style={style}>
           Switch name
         </button>
-        <Person
-          name={this.state.name}
-          age={this.state.age}
-          click={this.switchNameHandler.bind(this, "Nazmul")}
-          nameChange={this.nameChangeHandler.bind(this)}
-        >
-          What the fuchka
-        </Person>
+        {this.state.showPersons ? (
+          <Person
+            name={this.state.name}
+            age={this.state.age}
+            click={this.switchNameHandler.bind(this, "Nazmul")}
+            nameChange={this.nameChangeHandler.bind(this)}
+          >
+            What the fuchka
+          </Person>
+        ) : null}
       </div>
     );
   }

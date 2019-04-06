@@ -7,17 +7,23 @@ class App extends Component {
     age: 28,
     name: "Nazmul"
   };
-  switchNameHandler = () => {
+  switchNameHandler = name => {
     this.setState({
-      name: "Hasan"
+      name
     });
   };
   render() {
     return (
       <div className="App">
         <h1>Working</h1>
-        <button onClick={this.switchNameHandler}>Switch name</button>
-        <Person name={this.state.name} age={this.state.age}>
+        <button onClick={this.switchNameHandler.bind(this, "Hasan")}>
+          Switch name
+        </button>
+        <Person
+          name={this.state.name}
+          age={this.state.age}
+          click={this.switchNameHandler.bind(this, "Nazmul")}
+        >
           What the fuchka
         </Person>
       </div>

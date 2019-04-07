@@ -32,22 +32,26 @@ class App extends Component {
       padding: "8px",
       cursor: "pointer"
     };
+    let personView = null;
+    if (this.state.showPersons) {
+      personView = (
+        <Person
+          name={this.state.name}
+          age={this.state.age}
+          click={this.switchNameHandler.bind(this, "Nazmul")}
+          nameChange={this.nameChangeHandler.bind(this)}
+        >
+          What the fuchka
+        </Person>
+      );
+    }
     return (
       <div className="App">
         <h1>Working</h1>
         <button onClick={this.togglePersonHandler.bind(this)} style={style}>
           Switch name
         </button>
-        {this.state.showPersons ? (
-          <Person
-            name={this.state.name}
-            age={this.state.age}
-            click={this.switchNameHandler.bind(this, "Nazmul")}
-            nameChange={this.nameChangeHandler.bind(this)}
-          >
-            What the fuchka
-          </Person>
-        ) : null}
+        {personView}
       </div>
     );
   }

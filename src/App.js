@@ -4,9 +4,26 @@ import Person from "../src/Person/Person";
 
 class App extends Component {
   state = {
-    age: 28,
-    name: "Nazmul",
-    showPersons: false
+    
+    showPersons: false,
+    persons:[
+      {
+        age: 28,
+        name: "Nazmul",
+      },
+      {
+        age: 28,
+        name: "Hasan",
+      },
+      {
+        age: 24,
+        name: "Nazmun",
+      },
+      {
+        age: 23,
+        name: "Kamrul",
+      },
+    ]
   };
   switchNameHandler = name => {
     this.setState({
@@ -35,15 +52,13 @@ class App extends Component {
     let personView = null;
     if (this.state.showPersons) {
       personView = (
-        <Person
-          name={this.state.name}
-          age={this.state.age}
-          click={this.switchNameHandler.bind(this, "Nazmul")}
+        this.state.persons.map((person)=><Person
+          name={person.name}
+          age={person.age}
           nameChange={this.nameChangeHandler.bind(this)}
         >
-          What the fuchka
         </Person>
-      );
+      ));
     }
     return (
       <div className="App">

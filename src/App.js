@@ -7,18 +7,22 @@ class App extends Component {
     showPersons: false,
     persons: [
       {
+        id: 1,
         age: 28,
         name: "Nazmul"
       },
       {
+        id: 2,
         age: 28,
         name: "Hasan"
       },
       {
+        id: 3,
         age: 24,
         name: "Nazmun"
       },
       {
+        id: 4,
         age: 23,
         name: "Kamrul"
       }
@@ -56,6 +60,7 @@ class App extends Component {
           name={person.name}
           age={person.age}
           nameChange={this.nameChangeHandler.bind(this)}
+          key={person.id}
         />
       ));
     }

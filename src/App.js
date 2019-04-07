@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Person from "../src/Person/Person";
+import Radium from "radium";
 
 class App extends Component {
   state = {
@@ -60,11 +61,20 @@ class App extends Component {
       font: "inherit",
       border: "1px solid blue",
       padding: "8px",
-      cursor: "pointer"
+      cursor: "pointer",
+      ":hover": {
+        backgroundColor: "lightgreen",
+        color: "black"
+      }
     };
     let personView = null;
     if (this.state.showPersons) {
       style.backgroundColor = "red";
+      style[":hover"] = {
+        backgroundColor: "lightred",
+        color: "black"
+      };
+
       personView = this.state.persons.map((person, index) => (
         <Person
           click={this.deletePersonHandler.bind(this, index)}
@@ -96,4 +106,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);

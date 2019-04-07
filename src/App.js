@@ -55,7 +55,8 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: "white",
+      backgroundColor: "green",
+      color: "white",
       font: "inherit",
       border: "1px solid blue",
       padding: "8px",
@@ -63,6 +64,7 @@ class App extends Component {
     };
     let personView = null;
     if (this.state.showPersons) {
+      style.backgroundColor = "red";
       personView = this.state.persons.map((person, index) => (
         <Person
           click={this.deletePersonHandler.bind(this, index)}
@@ -75,11 +77,18 @@ class App extends Component {
         />
       ));
     }
+    let classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push("red");
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push("bold");
+    }
     return (
       <div className="App">
-        <h1>Working</h1>
+        <p className={classes.join(" ")}>Working</p>
         <button onClick={this.togglePersonHandler.bind(this)} style={style}>
-          Switch name
+          Toggle Person
         </button>
         {personView}
       </div>

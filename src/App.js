@@ -54,22 +54,9 @@ class App extends Component {
   };
 
   render() {
-    const style = {
-      backgroundColor: "green",
-      color: "white",
-      font: "inherit",
-      border: "1px solid blue",
-      padding: "8px",
-      cursor: "pointer"
-    };
     let personView = null;
+    let btnClass = "";
     if (this.state.showPersons) {
-      style.backgroundColor = "red";
-      style[":hover"] = {
-        backgroundColor: "lightred",
-        color: "black"
-      };
-
       personView = this.state.persons.map((person, index) => (
         <Person
           click={this.deletePersonHandler.bind(this, index)}
@@ -81,6 +68,7 @@ class App extends Component {
           key={person.id}
         />
       ));
+      btnClass = styles.Red;
     }
     let assignedClasses = [];
     if (this.state.persons.length <= 2) {
@@ -92,7 +80,10 @@ class App extends Component {
     return (
       <div className={styles.App}>
         <p className={assignedClasses.join(" ")}>Working</p>
-        <button onClick={this.togglePersonHandler.bind(this)} style={style}>
+        <button
+          onClick={this.togglePersonHandler.bind(this)}
+          className={btnClass}
+        >
           Toggle Person
         </button>
         {personView}

@@ -4,31 +4,30 @@ import Person from "../src/Person/Person";
 
 class App extends Component {
   state = {
-    
     showPersons: false,
-    persons:[
+    persons: [
       {
         age: 28,
-        name: "Nazmul",
+        name: "Nazmul"
       },
       {
         age: 28,
-        name: "Hasan",
+        name: "Hasan"
       },
       {
         age: 24,
-        name: "Nazmun",
+        name: "Nazmun"
       },
       {
         age: 23,
-        name: "Kamrul",
-      },
+        name: "Kamrul"
+      }
     ]
   };
-  switchNameHandler = name => {
-    this.setState({
-      name
-    });
+  deletePersonHandler = personIndex => {
+    const persons = this.state.persons;
+    persons.splice(personIndex, 1);
+    this.setState({ persons });
   };
   nameChangeHandler = event => {
     this.setState({
@@ -51,13 +50,13 @@ class App extends Component {
     };
     let personView = null;
     if (this.state.showPersons) {
-      personView = (
-        this.state.persons.map((person)=><Person
+      personView = this.state.persons.map((person, index) => (
+        <Person
+          click={this.deletePersonHandler.bind(this, index)}
           name={person.name}
           age={person.age}
           nameChange={this.nameChangeHandler.bind(this)}
-        >
-        </Person>
+        />
       ));
     }
     return (

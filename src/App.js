@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styles from './App.module.css';
-import Person from '../src/Person/Person';
-import ErrorBoundary from '../src/ErrorBoundary/ErrorBoundary';
+import Persons from '../src/Persons/Persons';
 
 class App extends Component {
    state = {
@@ -58,18 +57,15 @@ class App extends Component {
       let personView = null;
       let btnClass = '';
       if (this.state.showPersons) {
-         personView = this.state.persons.map((person, index) => (
-            <ErrorBoundary key={person.id}>
-               <Person
-                  click={this.deletePersonHandler.bind(this, index)}
-                  name={person.name}
-                  age={person.age}
-                  nameChange={(event) => {
-                     this.nameChangeHandler(event, person.id);
-                  }}
+         personView = (
+            <div>
+               <Persons
+                  persons={this.state.persons}
+                  clicked={this.deletePersonHandler}
+                  changed={this.nameChangeHandler}
                />
-            </ErrorBoundary>
-         ));
+            </div>
+         );
          btnClass = styles.Red;
       }
       let assignedClasses = [];

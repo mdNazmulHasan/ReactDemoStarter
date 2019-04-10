@@ -1,14 +1,20 @@
-import React from "react";
+import React, { Component } from "react";
 import styles from "./Person.module.css";
 
-const Person = props => {
-  return (
-    <div className={styles.Person}>
-      <p onClick={props.click}>
-        i am {props.name} and i am {props.age} years old
-      </p>
-      <input type="text" onChange={props.nameChange} value={props.name} />
-    </div>
-  );
-};
+class Person extends Component {
+  render() {
+    return (
+      <div className={styles.Person}>
+        <p onClick={this.props.click}>
+          i am {this.props.name} and i am {this.props.age} years old
+        </p>
+        <input
+          type="text"
+          onChange={this.props.nameChange}
+          value={this.props.name}
+        />
+      </div>
+    );
+  }
+}
 export default Person;

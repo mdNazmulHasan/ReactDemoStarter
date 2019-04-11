@@ -9,7 +9,7 @@ class Persons extends Component {
           click={() => this.props.clicked(index)}
           name={person.name}
           age={person.age}
-          nameChange={event => {
+          nameChange={(event) => {
             this.props.changed(event, person.id);
           }}
         />

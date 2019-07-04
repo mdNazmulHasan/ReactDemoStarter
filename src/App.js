@@ -4,31 +4,35 @@ import Persons from "./component/Persons/Persons";
 import Cockpit from "./component/Cockpit/Cockpit";
 
 class App extends Component {
-  state = {
-    showPersons: false,
-    persons: [
-      {
-        id: 1,
-        age: 28,
-        name: "Nazmul",
-      },
-      {
-        id: 2,
-        age: 28,
-        name: "Hasan",
-      },
-      {
-        id: 3,
-        age: 24,
-        name: "Nazmun",
-      },
-      {
-        id: 4,
-        age: 23,
-        name: "Kamrul",
-      },
-    ],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      showPersons: false,
+      persons: [
+        {
+          id: 1,
+          age: 28,
+          name: "Nazmul",
+        },
+        {
+          id: 2,
+          age: 28,
+          name: "Hasan",
+        },
+        {
+          id: 3,
+          age: 24,
+          name: "Nazmun",
+        },
+        {
+          id: 4,
+          age: 23,
+          name: "Kamrul",
+        },
+      ],
+    };
+  }
+
   deletePersonHandler = (personIndex) => {
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
